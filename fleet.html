@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AuraLogix | Fleet Tracking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#020617] text-slate-100 overflow-hidden">
+    <div class="flex h-screen w-full">
+        <aside class="w-20 flex flex-col items-center py-6 border-r border-slate-800 bg-slate-900/80">
+            <nav class="flex flex-col gap-8">
+                <a href="index.html"><i data-lucide="layout-grid" class="text-slate-500"></i></a>
+                <a href="fleet.html"><i data-lucide="truck" class="text-blue-400"></i></a>
+                <a href="routes.html"><i data-lucide="map-pin" class="text-slate-500"></i></a>
+                <a href="analytics.html"><i data-lucide="database" class="text-slate-500"></i></a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-8 overflow-y-auto">
+            <header class="mb-8">
+                <h1 class="text-3xl font-bold">Fleet Command</h1>
+                <p class="text-slate-400">Real-time asset utilization: <span class="text-blue-400 font-bold">98.2%</span> [cite: 158, 159]</p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass p-6 rounded-2xl border border-white/10 flex flex-col gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-bold text-lg">Truck Alpha-1</h3>
+                            <span class="text-[10px] bg-green-500/20 text-green-400 px-2 py-0.5 rounded">EN ROUTE</span>
+                        </div>
+                        <i data-lucide="info" class="w-5 h-5 text-slate-500 cursor-pointer"></i>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 text-xs text-slate-400">
+                        <p>Load: <span class="text-white">96% Capacity</span> [cite: 193]</p>
+                        <p>Fuel: <span class="text-white">74%</span></p>
+                    </div>
+                    <div class="w-full bg-slate-800 h-1 rounded-full overflow-hidden">
+                        <div class="bg-blue-500 h-full w-3/4"></div>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl border border-white/10 flex flex-col gap-4">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-bold text-lg">Truck Beta-2</h3>
+                            <span class="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded">LOADING</span>
+                        </div>
+                        <i data-lucide="info" class="w-5 h-5 text-slate-500 cursor-pointer"></i>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 text-xs text-slate-400">
+                        <p>Load: <span class="text-white">12% Capacity</span></p>
+                        <p>Fuel: <span class="text-white">98%</span></p>
+                    </div>
+                    <div class="w-full bg-slate-800 h-1 rounded-full overflow-hidden">
+                        <div class="bg-blue-500 h-full w-1/4"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

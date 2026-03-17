@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AuraLogix | Deep Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#020617] text-slate-100">
+    <div class="flex h-screen w-full">
+        <aside class="w-20 flex flex-col items-center py-6 border-r border-slate-800 bg-slate-900/80">
+            <nav class="flex flex-col gap-8">
+                <a href="index.html" title="Back to Map"><i data-lucide="arrow-left" class="text-blue-400 hover:text-white"></i></a>
+                <a href="details.html"><i data-lucide="line-chart" class="text-blue-400"></i></a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-8 overflow-y-auto">
+            <div class="flex justify-between items-center mb-10">
+                <div>
+                    <h1 class="text-3xl font-bold italic uppercase tracking-tighter">System <span class="text-blue-500">Analytics</span></h1>
+                    <p class="text-slate-500 text-sm">Fleet optimization insights powered by Gemini 1.5</p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="index.html" class="bg-slate-800 text-slate-300 px-4 py-2 rounded-xl text-xs hover:bg-slate-700 transition">Back to Map</a>
+                    <button onclick="window.print()" class="bg-blue-600/20 text-blue-400 border border-blue-500/50 px-4 py-2 rounded-xl text-xs font-bold hover:bg-blue-600/40 transition">Export PDF</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass p-6 rounded-3xl border border-white/5 flex flex-col items-center">
+                    <h3 class="text-[10px] font-bold mb-6 text-slate-400 uppercase tracking-widest text-center">Fleet Capacity Usage</h3>
+                    <div class="w-full max-w-[200px]">
+                        <canvas id="assetChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <p class="text-2xl font-bold">98.2%</p>
+                        <p class="text-[10px] text-green-400 uppercase tracking-widest font-bold">Optimal Efficiency</p>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-3xl border border-white/5 md:col-span-2">
+                    <h3 class="text-[10px] font-bold mb-6 text-slate-400 uppercase tracking-widest">Efficiency Gain Trend (%)</h3>
+                    <canvas id="fuelTrendChart" height="100"></canvas>
+                </div>
+
+                <div class="glass p-6 rounded-3xl border border-white/5 md:col-span-3">
+                    <h3 class="text-[10px] font-bold mb-6 text-slate-400 uppercase tracking-widest">Route Carbon Comparison (MT)</h3>
+                    <canvas id="emissionsChart" height="80"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // 1. Asset Utilization (Doughnut)
+        const assetCtx = document.getElementById('assetChart').getContext('2d');
+        new Chart(assetCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['In Transit', 'Idle', 'Maintenance'],
+                datasets: [{
+                    data: [98.2, 1, 0.8],
+                    backgroundColor: ['#3b82f6', '#1e293b', '#f87171'],
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: { cutout: '80%', plugins: { legend: { display: false } } }
+        });
+
+        // 2. Fuel Savings Trend (Line)
+        const fuelCtx = document.getElementById('fuelTrendChart').getContext('2d');
+        new Chart(fuelCtx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
+                datasets: [{
+                    label: 'Efficiency Gain',
+                    data: [12, 18, 14, 22, 25],
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: { plugins: { legend: { display: false } }, scales: { y: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8' } } } }
+        });
+
+        // 3. Emissions Comparison (Bar)
+        const emCtx = document.getElementById('emissionsChart').getContext('2d');
+        new Chart(emCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Long Beach Central', 'Terminal 4', 'South Gate', 'Port Express'],
+                datasets: [
+                    { label: 'Traditional Route', data: [50, 65, 48, 72], backgroundColor: '#1e293b', borderRadius: 8 },
+                    { label: 'AuraLogix Optimized', data: [38, 42, 35, 50], backgroundColor: '#10b981', borderRadius: 8 }
+                ]
+            },
+            options: { plugins: { legend: { labels: { color: '#94a3b8', font: { size: 10 } } } }, scales: { y: { grid: { color: '#1e293b' } } } }
+        });
+    </script>
+</body>
+</html>

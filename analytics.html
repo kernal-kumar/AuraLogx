@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AuraLogix | Data Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#020617] text-slate-100">
+    <div class="flex h-screen w-full">
+        <aside class="w-20 flex flex-col items-center py-6 border-r border-slate-800 bg-slate-900/80">
+            <nav class="flex flex-col gap-8">
+                <a href="index.html"><i data-lucide="layout-grid" class="text-slate-500"></i></a>
+                <a href="fleet.html"><i data-lucide="truck" class="text-slate-500"></i></a>
+                <a href="routes.html"><i data-lucide="map-pin" class="text-slate-500"></i></a>
+                <a href="analytics.html"><i data-lucide="database" class="text-blue-400"></i></a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-8">
+            <h1 class="text-3xl font-bold mb-8">System Analytics</h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="glass p-6 rounded-3xl text-center">
+                    <p class="text-xs text-slate-500 uppercase">Annual Savings</p>
+                    <h2 class="text-4xl font-black text-blue-400">$1.2M</h2>
+                    <p class="text-[10px] text-slate-500 mt-2">per 100-vehicle fleet [cite: 212, 213]</p>
+                </div>
+                <div class="glass p-6 rounded-3xl text-center">
+                    <p class="text-xs text-slate-500 uppercase">Empty Miles</p>
+                    <h2 class="text-4xl font-black text-purple-400">&lt;2%</h2>
+                    <p class="text-[10px] text-slate-500 mt-2">vs 20% industry avg [cite: 168, 207]</p>
+                </div>
+                <div class="glass p-6 rounded-3xl text-center">
+                    <p class="text-xs text-slate-500 uppercase">CO₂ Reduced</p>
+                    <h2 class="text-4xl font-black text-green-400">-25%</h2>
+                    <p class="text-[10px] text-slate-500 mt-2">Sustainable green routing [cite: 227, 228]</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

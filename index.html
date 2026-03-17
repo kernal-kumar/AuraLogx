@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraLogix | 3D AI Command Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#020617] text-slate-100 overflow-hidden">
+
+    <div class="flex h-screen w-full">
+        <aside class="w-20 flex flex-col items-center py-6 border-r border-slate-800 bg-slate-900/80">
+            <div class="mb-10 text-blue-500"><i data-lucide="sparkles" class="w-8 h-8"></i></div>
+            <nav class="flex flex-col gap-8 text-slate-500">
+                <a href="index.html" title="Dashboard"><i data-lucide="layout-grid" class="text-blue-400 cursor-pointer"></i></a>
+                <a href="fleet.html" title="Fleet Status"><i data-lucide="truck" class="hover:text-white cursor-pointer"></i></a>
+                <a href="routes.html" title="Route Optimization"><i data-lucide="map-pin" class="hover:text-white cursor-pointer"></i></a>
+                <a href="details.html" title="System Analytics"><i data-lucide="database" class="hover:text-white cursor-pointer"></i></a>
+            </nav>
+        </aside>
+
+        <div class="fixed bottom-6 left-24 flex gap-4 bg-slate-900/90 p-4 rounded-2xl border border-blue-500/30 backdrop-blur-md z-50">
+            <p class="text-[10px] uppercase tracking-widest text-blue-400 font-bold self-center mr-2">Demo Triggers:</p>
+            <button onclick="triggerPortCongestion()" class="bg-red-500/20 hover:bg-red-500/40 text-red-400 text-xs px-4 py-2 rounded-xl border border-red-500/50 transition">Simulate Bottleneck</button>
+            <button onclick="triggerFuelOptimization()" class="bg-green-500/20 hover:bg-green-500/40 text-green-400 text-xs px-4 py-2 rounded-xl border border-green-500/50 transition">Optimize Fuel</button>
+        </div>
+
+        <main class="flex-1 flex flex-col p-6 gap-6">
+            <header class="flex justify-between items-center">
+                <h1 class="text-2xl font-black uppercase italic">AURA<span class="text-blue-500">LOGIX</span></h1>
+                <div class="flex items-center gap-4">
+                    <span class="text-xs flex items-center gap-2">
+                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Gemini AI Online
+                    </span>
+                </div>
+            </header>
+
+            <div class="grid grid-cols-3 gap-6">
+                <a href="details.html" class="glass p-5 rounded-2xl border border-white/5 hover:border-blue-500/50 transition-all group">
+                    <div class="flex justify-between items-center">
+                        <p class="text-slate-400 text-xs uppercase font-bold">Asset Utilization</p>
+                        <i data-lucide="activity" class="w-4 h-4 text-blue-400 opacity-0 group-hover:opacity-100"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold">98.2%</h2>
+                    <p class="text-[10px] text-blue-400 mt-2">View capacity breakdown →</p>
+                </a>
+                
+                <a href="details.html" class="glass p-5 rounded-2xl border border-white/5 hover:border-green-500/50 transition-all group">
+                    <div class="flex justify-between items-center">
+                        <p class="text-slate-400 text-xs uppercase font-bold">Fuel Savings</p>
+                        <i data-lucide="trending-up" class="w-4 h-4 text-green-400 opacity-0 group-hover:opacity-100"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-green-400">20%</h2>
+                    <p class="text-[10px] text-green-400 mt-2">View efficiency trends →</p>
+                </a>
+
+                <div class="glass p-5 rounded-2xl border border-white/5">
+                    <p class="text-slate-400 text-xs uppercase font-bold">Empty Miles</p>
+                    <h2 class="text-3xl font-bold text-blue-400">&lt;2%</h2>
+                    <p class="text-[10px] text-slate-500 mt-2">Industry optimized</p>
+                </div>
+            </div>
+
+            <div class="flex-1 grid grid-cols-12 gap-6 min-h-0">
+                <div id="map-container" class="col-span-8 glass rounded-3xl overflow-hidden relative">
+                    <div id="map" style="width:100%; height:100%;"></div> 
+                </div>
+                
+                <div class="col-span-4 glass rounded-3xl flex flex-col p-5 border border-white/10">
+                    <h3 class="text-sm font-bold mb-4 flex items-center gap-2">
+                        <i data-lucide="message-square" class="w-4 h-4"></i> Gemini AI Command
+                    </h3>
+                    <div id="chat-history" class="flex-1 overflow-y-auto space-y-4 text-xs text-slate-300 pr-2">
+                        <p class="bg-slate-800/50 p-3 rounded-xl border border-slate-700">
+                            <b>AI Alert:</b> System initialized. Monitoring Port of Long Beach.
+                        </p>
+                    </div>
+                    <input type="text" id="chat-input" placeholder="Type command..." class="mt-4 bg-slate-800 border-none rounded-xl p-3 text-sm focus:ring-2 ring-blue-500 outline-none">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBam7OTZ3KwZGZdLNRWCJMgg_ivVEp8Uj0&callback=initMap&v=weekly&libraries=marker" defer></script>
+    <script src="script.js"></script>
+</body>
+</html>
